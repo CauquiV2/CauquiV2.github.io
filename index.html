@@ -1,28 +1,47 @@
-<img src="PLANO SILHOS-1.png" usemap="#image-map">
-
-<map name="image-map">
-    <area target="_self" alt="r1" title="r1" href="room1" coords="385,584,635,752" shape="rect">
-    <area target="_self" alt="r2" title="r2" href="room2" coords="733,585,1012,751" shape="rect">
-    <area target="_self" alt="r3" title="r3" href="room3" coords="496,262,681,349" shape="rect">
-    <area target="_self" alt="r4" title="r4" href="room4" coords="683,260,848,348" shape="rect">
-    <area target="_self" alt="r5" title="r5" href="room5" coords="500,816,664,1015" shape="rect">
-    <area target="_self" alt="r6" title="r6" href="room6" coords="354,814,495,1012" shape="rect">
-    <area target="_self" alt="r7" title="r7" href="room7" coords="363,450,465,577" shape="rect">
-    <area target="_self" alt="r8" title="r8" href="room8" coords="473,449,589,576" shape="rect">
-    <area target="_self" alt="r9" title="r9" href="room9" coords="597,444,712,578" shape="rect">
-    <area target="_self" alt="r10" title="r10" href="room10" coords="714,450,832,577" shape="rect">
-    <area target="_self" alt="r11" title="r11" href="room11" coords="667,812,886,812,886,939,775,945,771,1014,670,1014" shape="poly">
-    <area target="_self" alt="r12" title="r12" href="room12" coords="1064,818,1062,1015,1406,1010,1407,815" shape="poly">
-    <area target="_self" alt="r13" title="r13" href="room13" coords="267,404,321,654" shape="rect">
-    <area target="_self" alt="r14" title="r14" href="room14" coords="267,657,321,796" shape="rect">
-    <area target="_self" alt="r4m1" title="r4m1" href="room4mic1" coords="754,604,14" shape="circle">
-    <area target="_self" alt="r4m2" title="r4m2" href="room4mic2" coords="1003,737,14" shape="circle">
-    <area target="_self" alt="r4m3" title="r4m3" href="room4mic3" coords="998,597,14" shape="circle">
-    <area target="_self" alt="r4m4" title="r4m4" href="room4mic4" coords="749,736,17" shape="circle">
-    <area target="_self" alt="r3m1" title="r3m1" href="room3mic1" coords="461,594,10" shape="circle">
-    <area target="_self" alt="r3m2" title="r3m2" href="room3mic2" coords="560,591,13" shape="circle">
-    <area target="_self" alt="r3m3" title="r3m3" href="room3mic3" coords="625,642,12" shape="circle">
-    <area target="_self" alt="r3m4" title="r3m4" href="room3mic4" coords="625,708,12" shape="circle">
-    <area target="_self" alt="r3m5" title="r3m5" href="room3mic5" coords="557,740,10" shape="circle">
-    <area target="_self" alt="r3m6" title="r3m6" href="room3mic6" coords="467,739,10" shape="circle">
-</map>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .map-container {
+            position: relative;
+            display: inline-block;
+        }
+        .building-map {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+        .map-area {
+            position: absolute;
+            border: 2px solid transparent;
+            opacity: 0.5;  /* Make overlays semi-transparent */
+        }
+        .map-area[data-status="available"] {
+            background-color: green;
+        }
+        .map-area[data-status="occupied"] {
+            background-color: red;
+        }
+        .map-area[data-status="maintenance"] {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1>Building Map</h1>
+    <div class="map-container">
+        <img src="PLANO SILHOS-1.png" class="building-map" alt="Building Map">
+        <!-- Overlay divs will be added here by JavaScript -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
