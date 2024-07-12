@@ -91,6 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ensure the image is fully loaded before processing
     mapImage.addEventListener('load', () => {
         const imageRect = mapImage.getBoundingClientRect();
+        var img=document.getElementById('Building Map');
+        img.onload = function() {
+            var naturalWidth  = img.naturalWidth;
+            var naturalHeight = img.naturalHeight;
+        }
 
         const naturalWidth = 1654; // Replace with your image's natural width
         const naturalHeight = 1024; // Replace with your image's natural height
