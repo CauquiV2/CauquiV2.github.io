@@ -18,6 +18,7 @@ document.getElementById('roomForm').addEventListener('submit', function(event) {
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
+    const roomNumbers = {};
     
     thead.innerHTML = `
         <tr>
@@ -35,6 +36,7 @@ document.getElementById('roomForm').addEventListener('submit', function(event) {
         row.appendChild(cell1);
         row.appendChild(cell2);
         tbody.appendChild(row);
+        roomNumbers[key]=value;
     });
     table.appendChild(tbody);
     outputDiv.appendChild(table);
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const naturalHeight = 2339; // Replace with your image's natural height
 
         const rooms = [
-            { id: 'room1', coords: '385,584,635,752', shape: 'rect', status: statuss('vroom1') },
+            { id: 'room1', coords: '385,584,635,752', shape: 'rect', status: statuss(roomNumbers.room1) },
             { id: 'room2', coords: '733,585,1012,751', shape: 'rect', status: 'occupied' },
             { id: 'room3', coords: '496,262,681,349', shape: 'rect', status: 'maintenance' },
             { id: 'room4', coords: '683,260,848,348', shape: 'rect', status: 'available' },
