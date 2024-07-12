@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageRect = mapImage.getBoundingClientRect();
 
         const naturalWidth = 1654; // Replace with your image's natural width
-        const naturalHeight = 2339; // Replace with your image's natural height
+        const naturalHeight = 1024; // Replace with your image's natural height
 
         const rooms = [
             { id: 'room1', coords: '385,584,635,752', shape: 'rect',group:'room', status: 'available' },
