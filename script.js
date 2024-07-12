@@ -91,14 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ensure the image is fully loaded before processing
     mapImage.addEventListener('load', () => {
         const imageRect = mapImage.getBoundingClientRect();
-        var img=document.getElementById('Building Map');
-        img.onload = function() {
-            var naturalWidth  = 1654;
-            var naturalHeight = 1140;
-        }
 
-        /* const naturalWidth = 1654; // Replace with your image's natural width
-        const naturalHeight = 1024; */ // Replace with your image's natural height
+        const naturalWidth = 1654; // Replace with your image's natural width
+        const naturalHeight = 1140; // Replace with your image's natural height
 
         const rooms = [
             { id: 'room1', coords: '385,584,635,752', shape: 'rect',group:'room', status: 'available' },
