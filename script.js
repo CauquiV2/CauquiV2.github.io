@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const coords = room.coords.split(',').map(Number);
             const areaDiv = document.createElement('div');
             areaDiv.classList.add('map-area');
+            reaDiv.classList.add(room.group);
             areaDiv.id = room.id;
             areaDiv.style.backgroundColor = {
                 'available': 'green',
