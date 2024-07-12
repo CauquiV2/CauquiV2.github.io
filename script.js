@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageRect = mapImage.getBoundingClientRect();
         var img=document.getElementById('Building Map');
         img.onload = function() {
-            var naturalWidth  = img.naturalWidth;
-            var naturalHeight = img.naturalHeight;
+            var naturalWidth  = 1654;
+            var naturalHeight = 1140;
         }
 
         /* const naturalWidth = 1654; // Replace with your image's natural width
