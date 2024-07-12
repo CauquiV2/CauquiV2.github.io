@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         rooms.forEach(room => {
             const coords = room.coords.split(',').map(Number);
-            const areaDiv = document.createElement('div');
+            const areaDiv = document.createElement('div');;
             areaDiv.classList.add('map-area');
             areaDiv.classList.add(room.group);
             areaDiv.id = room.id;
