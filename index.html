@@ -23,14 +23,11 @@
         .map-area {
             position: absolute;
             border: 2px solid transparent;
+            opacity: 0.5; /* Default opacity for non-circle shapes */
         }
 
-        .room {
-            opacity: 0.5; /* Opacity for group 1 */
-        }
-
-        .mic {
-            opacity: 1; /* Opacity for group 2 */
+        .map-area.circle {
+            opacity: 1; /* Opacity for circle shapes */
         }
         .map-area[data-status="available"] {
             background-color: green;
