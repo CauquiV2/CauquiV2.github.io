@@ -2,7 +2,7 @@ function statuss(value) {
     if (value <= 40) {
         return 'available';
     }
-    if (value > 40 && value < 50) {
+    if ((value > 40) && (value < 50)) {
         return 'maintenance';
     }
     if (value > 50) {
