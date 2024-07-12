@@ -1,3 +1,44 @@
+function statuss(value){
+    if (value<=40){
+        return 'available'
+    }
+    if ((value>40)&&(value<50)){
+        return 'maintenance'
+
+    }
+    if (value>50){
+        return 'occupied'
+    }
+}
+document.getElementById('roomForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting the traditional way
+    const formData = new FormData(event.target);
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = '<h2>Entered Room Numbers</h2>';
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+    
+    thead.innerHTML = `
+        <tr>
+            <th>Room</th>
+            <th>Number</th>
+        </tr>
+    `;
+    table.appendChild(thead);
+    formData.forEach((value, key) => {
+        const row = document.createElement('tr');
+        const cell1 = document.createElement('td');
+        const cell2 = document.createElement('td');
+        cell1.textContent = key.replace('room', 'Room ');
+        cell2.textContent = value;
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+    outputDiv.appendChild(table);
+});
 document.addEventListener('DOMContentLoaded', function() {
     const mapContainer = document.querySelector('.map-container');
     const mapImage = document.querySelector('.building-map');
