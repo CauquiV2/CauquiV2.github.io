@@ -2,7 +2,7 @@ function statuss(value) {
     if (value <= 40) {
         return 'available';
     }
-    if ((value > 40) && (value < 50)) {
+    if (value > 40 && value < 50) {
         return 'maintenance';
     }
     if (value > 50) {
@@ -16,13 +16,22 @@ function statuss(value) {
 function updateRoomStatus(inputElement) {
     const value = parseInt(inputElement.value, 10);
     const status = statuss(value);
-    const cell = inputElement.parentElement;
+    const roomId = inputElement.dataset.roomId;
     const color = {
         'available': 'green',
         'maintenance': 'orange',
         'occupied': 'red'
     }[status] || 'transparent';
+
+    // Update the table cell color
+    const cell = inputElement.parentElement;
     cell.style.backgroundColor = color;
+
+    // Update the map overlay color
+    const mapArea = document.getElementById(roomId);
+    if (mapArea) {
+        mapArea.style.backgroundColor = color;
+    }
 }
 
 document.querySelectorAll('input[type="number"]').forEach(input => {
@@ -133,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const coords = room.coords.split(',').map(Number);
             const areaDiv = document.createElement('div');
             areaDiv.classList.add('map-area');
+            areaDiv.id = room.id;
             areaDiv.style.backgroundColor = {
                 'available': 'green',
                 'occupied': 'red',
