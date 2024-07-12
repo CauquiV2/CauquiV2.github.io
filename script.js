@@ -1,15 +1,33 @@
-function statuss(value){
-    if (value<=40){
-        return 'available'
+function statuss(value) {
+    if (value <= 40) {
+        return 'available';
     }
-    if ((value>40)&&(value<50)){
-        return 'maintenance'
-
+    if (value > 40 && value < 50) {
+        return 'maintenance';
     }
-    if (value>50){
-        return 'occupied'
+    if (value > 50) {
+        return 'occupied';
     }
 }
+
+function updateRoomStatus(inputElement) {
+    const value = parseInt(inputElement.value, 10);
+    const status = statuss(value);
+    const cell = inputElement.parentElement;
+    const color = {
+        'available': 'green',
+        'maintenance': 'orange',
+        'occupied': 'red'
+    }[status] || 'transparent';
+    cell.style.backgroundColor = color;
+}
+
+document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('input', function() {
+        updateRoomStatus(this);
+    });
+});
+
 document.getElementById('roomForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form from submitting the traditional way
     const formData = new FormData(event.target);
@@ -19,7 +37,7 @@ document.getElementById('roomForm').addEventListener('submit', function(event) {
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
     const roomNumbers = {};
-    
+
     thead.innerHTML = `
         <tr>
             <th>Room</th>
@@ -27,6 +45,7 @@ document.getElementById('roomForm').addEventListener('submit', function(event) {
         </tr>
     `;
     table.appendChild(thead);
+
     formData.forEach((value, key) => {
         const row = document.createElement('tr');
         const cell1 = document.createElement('td');
@@ -36,11 +55,13 @@ document.getElementById('roomForm').addEventListener('submit', function(event) {
         row.appendChild(cell1);
         row.appendChild(cell2);
         tbody.appendChild(row);
-        roomNumbers[key]=value;
+        roomNumbers[key] = value;
     });
+
     table.appendChild(tbody);
     outputDiv.appendChild(table);
 });
+
 document.addEventListener('DOMContentLoaded', function() {
     const mapContainer = document.querySelector('.map-container');
     const mapImage = document.querySelector('.building-map');
@@ -48,12 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ensure the image is fully loaded before processing
     mapImage.addEventListener('load', () => {
         const imageRect = mapImage.getBoundingClientRect();
-        
+
         const naturalWidth = 1654; // Replace with your image's natural width
         const naturalHeight = 2339; // Replace with your image's natural height
 
         const rooms = [
-            { id: 'room1', coords: '385,584,635,752', shape: 'rect', status: statuss(roomNumbers.room1) },
+            { id: 'room1', coords: '385,584,635,752', shape: 'rect', status: 'available' },
             { id: 'room2', coords: '733,585,1012,751', shape: 'rect', status: 'occupied' },
             { id: 'room3', coords: '496,262,681,349', shape: 'rect', status: 'maintenance' },
             { id: 'room4', coords: '683,260,848,348', shape: 'rect', status: 'available' },
