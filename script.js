@@ -110,7 +110,7 @@ function updateRoomColors(roomNumbers){
                 { id: 'room12', coords: '1064,818,1062,1015,1406,1010,1407,815', shape: 'poly', group:'room',status: 'maintenance' },
                 { id: 'room13', coords: '267,404,321,654', shape: 'rect', group:'room',status: 'available' },
                 { id: 'room14', coords: '267,657,321,796', shape: 'rect', group:'room',status: 'occupied' },
-                { id: 'room1m1', coords: '754,530,7', shape: 'circle', group:'mic',status: 'occupied' },
+                { id: 'room1m1', coords: '754,560,7', shape: 'circle', group:'mic',status: 'occupied' },
                 { id: 'room1m2', coords: '1003,737,7', shape: 'circle', group:'mic',status: 'occupied' },
                 { id: 'room4m3', coords: '998,597,7', shape: 'circle', group:'mic',status: 'occupied' },
                 { id: 'room4m4', coords: '749,736,7', shape: 'circle', group:'mic',status: 'occupied' },
