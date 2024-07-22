@@ -114,12 +114,11 @@ function updateRoomColors(roomNumbers){
                 { id: 'room1m2', coords: '633,583,512,662', shape: 'rect', group:'mic',status: 'occupied' },
                 { id: 'room4m3', coords: '635,751,512,662', shape: 'rect', group:'mic',status: 'occupied' },
                 { id: 'room4m4', coords: '386,754,512,662', shape: 'rect', group:'mic',status: 'occupied' },
-                { id: 'room3m1', coords: '461,594,50', shape: 'circle',  group:'mic',status: 'occupied' },
-                { id: 'room3m2', coords: '560,591,50', shape: 'circle',  group:'mic',status: 'occupied' },
-                { id: 'room3m3', coords: '625,642,50', shape: 'circle',  group:'mic',status: 'occupied' },
-                { id: 'room3m4', coords: '625,708,50', shape: 'circle',  group:'mic',status: 'occupied' },
-                { id: 'room3m5', coords: '557,740,50', shape: 'circle',  group:'mic',status: 'occupied' },
-                { id: 'room3m6', coords: '467,739,50', shape: 'circle',  group:'mic',status: 'occupied' },
+                { id: 'room3m1', coords: '747,596,61', shape: 'circle',  group:'mic',status: 'occupied' },
+                { id: 'room3m2', coords: '994,598,64', shape: 'circle',  group:'mic',status: 'occupied' },
+                { id: 'room3m3', coords: '742,741,62', shape: 'circle',  group:'mic',status: 'occupied' },
+                { id: 'room3m4', coords: '1005,741,62', shape: 'circle',  group:'mic',status: 'occupied' },
+                
             ];
 
             const convertToPercentage = (pixelValue, dimension) => (pixelValue / dimension) * 100;
