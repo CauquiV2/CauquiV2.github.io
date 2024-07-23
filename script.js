@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const overlayBg = document.querySelector('.overlay-bg');
     const image = document.getElementById('background-image');
   
-    function setOverlay(x, y, size, startAngle, endAngle) {
+    function setOverlay(xPercent, yPercent, size, startAngle, endAngle) {
       const rect = image.getBoundingClientRect();
   
       // Calculate the actual position and size of the overlay relative to the image
@@ -16,8 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
       overlay.style.width = `${size}px`;
       overlay.style.height = `${size}px`;
   
-      const left = xOffset + (x / 100) * imgWidth - radius;
-      const top = yOffset + (y / 100) * imgHeight - radius;
+      // Calculate the position based on the percentage coordinates
+      const left = xOffset + (xPercent / 100) * imgWidth - radius;
+      const top = yOffset + (yPercent / 100) * imgHeight - radius;
   
       overlay.style.left = `${left}px`;
       overlay.style.top = `${top}px`;
@@ -45,16 +46,16 @@ document.addEventListener("DOMContentLoaded", function() {
       };
     }
   
-    // Example usage:
-    // Coordinates (x, y) as percentage of the image dimensions, size (diameter), startAngle, and endAngle
-    const x = 50;  // 50% from the left of the image
-    const y = 50;  // 50% from the top of the image
+    // Coordinates (xPercent, yPercent) as percentage of the image dimensions, size (diameter), startAngle, and endAngle
+    const xPercent = 50;  // 50% from the left of the image
+    const yPercent = 50;  // 50% from the top of the image
     const size = 300;
     const startAngle = 0;
     const endAngle = 90;
   
-    setOverlay(x, y, size, startAngle, endAngle);
+    // Initial setup
+    setOverlay(xPercent, yPercent, size, startAngle, endAngle);
   
     // Reposition the overlay when the window is resized
-    window.addEventListener('resize', () => setOverlay(x, y, size, startAngle, endAngle));
+    window.addEventListener('resize', () => setOverlay(xPercent, yPercent, size, startAngle, endAngle));
   });
