@@ -1,127 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building Map</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .map-container {
-            position: relative;
-            display: inline-block;
-        }
-        .building-map {
-            width: 100%;
-            max-width: 3200px;
-            height: auto;
-        }
-        .map-area {
-            position: absolute;
-            border: 2px solid transparent;
-            opacity: 0.3;  /* Make overlays semi-transparent */
-        }
-
-        .room {
-            opacity: 0.3; /* Opacity for group 1 */
-        }
-
-        .mic {
-            opacity: 0.4; /* Opacity for group 2 */
-        }
-        .map-area[data-status="available"] {
-            background-color: green;
-        }
-        .map-area[data-status="occupied"] {
-            background-color: red;
-        }
-        .map-area[data-status="maintenance"] {
-            background-color: yellow;
-        }
-        table {
-            width: 50%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .output {
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partial Circular Overlay</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Plano ruido</h1>
-    <div class="map-container">
-        <img src="PLANO SILHOS (5)-3.png" class="building-map" alt="Building Map" id="Building Map">
-        <!-- Overlay divs will be added here by JavaScript -->
+  <div class="image-container">
+    <img src="path/to/your/image.jpg" alt="Background Image" id="background-image">
+    <div id="overlay">
+      <div class="overlay-bg"></div>
     </div>
-    <div class="container">
-        <h1>tabla de ruido</h1>
-        <form id="roomForm">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Room</th>
-                        <th>Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Room 1</td>
-                        <td><input type="number" name="room1" data-room-id='room1' data-group='room' required></td>
-                    </tr>
-                    <tr>
-                        <td>Room 2</td>
-                        <td><input type="number" name="room2" data-room-id='room2' data-group='room' required></td>
-                    </tr>
-                    <tr>
-                        <td>Room 3</td>
-                        <td><input type="number" name="room3" data-room-id='room3' data-group='room' required></td>
-                    </tr>
-                    <tr>
-                        <td>Room 4</td>
-                        <td><input type="number" name="room4" data-room-id='room4' data-group='room' required></td>
-                    </tr>
-                    <tr>
-                        <td>Room 5</td>
-                        <td><input type="number" name="room5" data-room-id='room5' data-group='room' required></td>
-                    </tr>
-                    <tr>
-                        <td>Room 6</td>
-                        <td><input type="number" name="room6" data-room-id='room6' data-group='room' required></td>
-                    </tr>
-                    <tr>
-                        <td>mic1</td>
-                        <td><input type="number" name="room1m1" data-room-id='room1m1' data-group='mic' required></td>
-                    </tr>
-                    <tr>
-                        <td>mic2</td>
-                        <td><input type="number" name="room1m2" data-room-id='room1m2' data-group='mic' required></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                </tbody>
-            </table>
-            <button type="submit">Submit</button>
-        </form>
-        <div class="output" id="output"></div>
-    </div>
-
-    <script src="script.js"></script>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
