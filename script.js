@@ -194,6 +194,11 @@ function updateRoomColors(roomNumbers){
                 areaDiv.title = room.id;  // Tooltip with room id
                 areaDiv.style.pointerEvents = 'none';  // Make sure the div does not interfere with map clicks
                 mapContainer.appendChild(areaDiv);
+
+                const textElement = document.createElement('div');
+                textElement.id = `${room.id}-text`; // Assign an ID
+                textElement.textContent = 0;
+                areaDiv.appendChild(textElement);
             });
         });
     
@@ -209,3 +214,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+/* uibuilder.onChange('msg', (msg) => {
+    if (msg.topic=="cambioLvlSala"){
+        var color=msg.lvlSala==1? "green":msg.lvlSala==2?'yellow':'red';
+        var room=msg.Room_ID==1?'room1':msg.Room_ID==2?'room2':msg.Room_ID==3?'room3':msg.Room_ID==4?'room4':0;
+        const mapArea = document.getElementById(room);
+        const textroom = msg.Room_ID == 1 ? 'room1-text' : msg.Room_ID == 2 ? 'room2-text' : msg.Room_ID == 3 ? 'room3-text' : msg.Room_ID == 4 ? 'room4-text' : 0;
+        var roomtext= document.getElementById(textroom);
+        roomtext.textContent=msg.dB;
+        if (mapArea) {
+            mapArea.style.backgroundColor = color;
+        }
+    }
+}) */
