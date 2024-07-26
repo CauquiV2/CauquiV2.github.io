@@ -96,14 +96,14 @@ function updateRoomColors(roomNumbers) {
         const naturalHeight = 1140; // Replace with your image's natural height
 
         const rooms = [
-            { id: "room1", coords: "3224,1469,3133,1560", shape: "rect", group: "room", status: "available" },
-            { id: "room2", coords: "3224,2159,3133,2254", shape: "rect", group: "room", status: "available" },
-            { id: "room3", coords: "5242,1420,5246,1618,4948,1614,4948,1858,4721,1858,4725,1622,3902,1626,3902,1420", shape: "poly", group: "room", status: "available" },
-            { id: "room4", coords: "4940,1866,4716,1862,4717,2106,3915,2106,3915,2325,5241,2329,5241,2101,4944,2106", shape: "poly", group: "room", status: "available" },
-            { id: "room5", coords: "3898,1424,3894,1622,3443,1618,3441,1866,2844,1858,2852,1601,2315,1605,2311,1415", shape: "poly", group: "room", status: "available" },
-            { id: "room6", coords: "3441,2106,3441,1874,2856,1866,2852,2097,2315,2101,2311,2304,3915,2325,3910,2110", shape: "poly", group: "room", status: "available" },
-            { id: "room7", coords: "2310,1411,2311,1605,1583,1601,1583,1849,1364,1849,1360,1593,963,1593,963,1407", shape: "poly", group: "room", status: "available" },
-            { id: "room8", coords: "2311,2097,2311,2308,963,2287,959,2101,1356,2097,1360,1853,1575,1853,1571,2089", shape: "poly", group: "room", status: "available" }
+            { id: "room1", coords: "3138,1427,3209,1503", shape: "rect", group: "room", status: "available" },
+            { id: "room2", coords: "3133,2169,3214,2245", shape: "rect", group: "room", status: "available" },
+            { id: "room3", coords: "5234,1417,5234,1610,4941,1610,4941,1867,4707,1867,4707,1604,3765,1606,3765,1402", shape: "poly", group: "room", status: "available" },
+            { id: "room4", coords: "5245,2092,5239,2290,3754,2290,3754,2103,4719,2109,4719,1869,4941,1869,4941,2092", shape: "poly", group: "room", status: "available" },
+            { id: "room5", coords: "3754,2099,3438,2099,3432,1842,2847,1836,2847,2088,2391,2088,2391,2298,3754,2292", shape: "poly", group: "room", status: "available" },
+            { id: "room6", coords: "2391,2080,1572,2080,1572,1840,1349,1846,1349,2080,963,2080,963,2284,2391,2290", shape: "poly", group: "room", status: "available" },
+            { id: "room7", coords: "963,1411,963,1604,1361,1604,1361,1832,1572,1832,1566,1598,2402,1593,2402,1400", shape: "poly", group: "room", status: "available" },
+            { id: "room8", coords: "3759,1398,3759,1608,3438,1608,3432,1830,2847,1830,2841,1596,2408,1596,2408,1398", shape: "poly", group: "room", status: "available" }
         ];
 
         const convertToPercentage = (pixelValue, dimension) => (pixelValue / dimension) * 100;
