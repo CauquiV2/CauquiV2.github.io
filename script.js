@@ -96,29 +96,14 @@ function updateRoomColors(roomNumbers) {
         const naturalHeight = 1140; // Replace with your image's natural height
 
         const rooms = [
-            { id: 'room1', coords: '385,584,635,752', shape: 'rect', group: 'room', status: 'available' },
-            { id: 'room2', coords: '733,585,1012,751', shape: 'rect', group: 'room', status: 'occupied' },
-            { id: 'room3', coords: '496,262,681,349', shape: 'rect', group: 'room', status: 'maintenance' },
-            { id: 'room4', coords: '683,260,848,348', shape: 'rect', group: 'room', status: 'available' },
-            { id: 'room5', coords: '500,816,664,1015', shape: 'rect', group: 'room', status: 'occupied' },
-            { id: 'room6', coords: '354,814,495,1012', shape: 'rect', group: 'room', status: 'maintenance' },
-            { id: 'room7', coords: '363,450,465,577', shape: 'rect', group: 'room', status: 'available' },
-            { id: 'room8', coords: '473,449,589,576', shape: 'rect', group: 'room', status: 'occupied' },
-            { id: 'room9', coords: '597,444,712,578', shape: 'rect', group: 'room', status: 'maintenance' },
-            { id: 'room10', coords: '714,450,832,577', shape: 'rect', group: 'room', status: 'available' },
-            { id: 'room11', coords: '667,812,886,812,886,939,775,945,771,1014,670,1014', shape: 'poly', group: 'room', status: 'occupied' },
-            { id: 'room12', coords: '1064,818,1062,1015,1406,1010,1407,815', shape: 'poly', group: 'room', status: 'maintenance' },
-            { id: 'room13', coords: '267,404,321,654', shape: 'rect', group: 'room', status: 'available' },
-            { id: 'room14', coords: '267,657,321,796', shape: 'rect', group: 'room', status: 'occupied' },
-            /* { id: 'room1m1', coords: '389,586,509,661', shape: 'rect', group: 'mic', status: 'occupied' },
-            { id: 'room1m2', coords: '518,659,638,585', shape: 'rect', group: 'mic', status: 'occupied' },
-            { id: 'room4m3', coords: '391,748,512,671', shape: 'rect', group: 'mic', status: 'occupied' },
-            { id: 'room4m4', coords: '639,750,521,666', shape: 'rect', group: 'mic', status: 'occupied' },
-            { id: 'room3m1', coords: '790,625,61', shape: 'circle', group: 'mic', status: 'occupied' },
-            { id: 'room3m2', coords: '994,598,64', shape: 'circle', group: 'mic', status: 'occupied' },
-            { id: 'room3m3', coords: '789,710,62', shape: 'circle', group: 'mic', status: 'occupied' },
-            { id: 'room3m4', coords: '1005,741,62', shape: 'circle', group: 'mic', status: 'occupied' }, */
-
+            { id: "room1", coords: "3224,1469,3133,1560", shape: "rect", group: "room", status: "available" },
+            { id: "room2", coords: "3224,2159,3133,2254", shape: "rect", group: "room", status: "available" },
+            { id: "room3", coords: "5242,1420,5246,1618,4948,1614,4948,1858,4721,1858,4725,1622,3902,1626,3902,1420", shape: "poly", group: "room", status: "available" },
+            { id: "room4", coords: "4940,1866,4716,1862,4717,2106,3915,2106,3915,2325,5241,2329,5241,2101,4944,2106", shape: "poly", group: "room", status: "available" },
+            { id: "room5", coords: "3898,1424,3894,1622,3443,1618,3441,1866,2844,1858,2852,1601,2315,1605,2311,1415", shape: "poly", group: "room", status: "available" },
+            { id: "room6", coords: "3441,2106,3441,1874,2856,1866,2852,2097,2315,2101,2311,2304,3915,2325,3910,2110", shape: "poly", group: "room", status: "available" },
+            { id: "room7", coords: "2310,1411,2311,1605,1583,1601,1583,1849,1364,1849,1360,1593,963,1593,963,1407", shape: "poly", group: "room", status: "available" },
+            { id: "room8", coords: "2311,2097,2311,2308,963,2287,959,2101,1356,2097,1360,1853,1575,1853,1571,2089", shape: "poly", group: "room", status: "available" }
         ];
 
         const convertToPercentage = (pixelValue, dimension) => (pixelValue / dimension) * 100;
@@ -203,31 +188,7 @@ function updateRoomColors(roomNumbers) {
     });
 
 };
-uibuilder.onChange('msg', (msg) => {
-    if (msg.topic=="cambioLvlSala"){
-        var color=msg.lvlSala==1? "green":msg.lvlSala==2?'yellow':'red';
-        var room=msg.Room_ID==1?'room1':msg.Room_ID==2?'room2':msg.Room_ID==3?'room3':msg.Room_ID==4?'room4':0;
-        const mapArea = document.getElementById(room);
-        const textroom = msg.Room_ID == 1 ? 'room1-text' : msg.Room_ID == 2 ? 'room2-text' : msg.Room_ID == 3 ? 'room3-text' : msg.Room_ID == 4 ? 'room4-text' : 0;
-        var roomtext= document.getElementById(textroom);
-        roomtext.textContent=msg.dB;
-        if (mapArea) {
-            mapArea.style.backgroundColor = color;
-        }
-        /* if (msg.Room_ID==1){
-            const mapArea = document.getElementById('room1');
-            if (mapArea) {
-                    mapArea.style.backgroundColor = color;
-                }
-        }
-        if (msg.Room_ID==2){
-            const mapArea = document.getElementById('room2');
-            if (mapArea) {
-                    mapArea.style.backgroundColor = color;
-                }
-        } */
-    }
-})
+
 // Add an event listener to ensure the DOM is fully loaded before processing
 document.addEventListener('DOMContentLoaded', function () {
     const mapImage = document.querySelector('.building-map');
