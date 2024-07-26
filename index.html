@@ -1,134 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building Map</title>
+    <title>Image Map</title>
     <style>
-        /* body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .map-container {
+        #image-map-container {
             position: relative;
-            display: inline-block;
         }
-
-        .building-map {
+        #image-map {
             width: 100%;
-            max-width: 3200px;
             height: auto;
         }
-
-        .map-area {
+        .highlight {
             position: absolute;
-            border: 2px solid transparent;
-            opacity: 0.3;
-           
+            border: 2px solid red;
+            background: rgba(255, 0, 0, 0.3);
         }
-
-        .room {
-            opacity: 0.3;
-           
-        }
-
-        .mic {
-            opacity: 0.4;
-            
-        }
-
-        .map-area[data-status="available"] {
-            background-color: green;
-        }
-
-        .map-area[data-status="occupied"] {
-            background-color: red;
-        }
-
-        .map-area[data-status="maintenance"] {
-            background-color: yellow;
-        }
-
-        table {
-            width: 50%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .output {
-            margin-top: 20px;
-        } */
-    
-        .map-container {
-            position: relative;
-            width: 100%;
-            max-width: 3200px;
-            margin: auto;
-        }
-    
-        .building-map {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-width:3200px
-        }
-    
-        .map-area {
-            position: absolute;
-            border: 2px solid transparent;
-            opacity: 0.3;
-            display: flex;
-            align-items: margin-top;
-            justify-content: center;
-            color:  black;
-            /* Default color, will be overridden */
-            font-weight: bold;
-            text-align: center;
-        }
-    
-        .room-group {
-            opacity: 0.3;
-        }
-    
-        .mic-group {
-            opacity: 1.0;
-        }
-    </style>
     </style>
 </head>
-
 <body>
-    <h1>Plano ruido</h1>
-    <div class="map-container">
-        <img src='planos-planta-TiP_BN2-2.png' class="building-map" alt="Building Map" id="Building Map">
-        <!-- Overlay divs will be added here by JavaScript -->
+    <div id="image-map-container">
+        <img src="your-image.jpg" usemap="#image-map" id="image-map">
+        <map name="image-map">
+            <area target="" alt="" title="" href="" coords="3138,1427,3209,1503" shape="rect" id="room1">
+            <area target="" alt="" title="" href="" coords="3133,2169,3214,2245" shape="rect" id="room2">
+            <area target="" alt="" title="" href="" coords="5234,1417,5234,1610,4941,1610,4941,1867,4707,1867,4707,1604,3765,1606,3765,1402" shape="poly" id="room3">
+            <area target="" alt="" title="" href="" coords="5245,2092,5239,2290,3754,2290,3754,2103,4719,2109,4719,1869,4941,1869,4941,2092" shape="poly" id="room4">
+            <area target="" alt="" title="" href="" coords="3754,2099,3438,2099,3432,1842,2847,1836,2847,2088,2391,2088,2391,2298,3754,2292" shape="poly" id="room5">
+            <area target="" alt="" title="" href="" coords="2391,2080,1572,2080,1572,1840,1349,1846,1349,2080,963,2080,963,2284,2391,2290" shape="poly" id="room6">
+            <area target="" alt="" title="" href="" coords="963,1411,963,1604,1361,1604,1361,1832,1572,1832,1566,1598,2402,1593,2402,1400" shape="poly" id="room7">
+            <area target="" alt="" title="" href="" coords="3759,1398,3759,1608,3438,1608,3432,1830,2847,1830,2841,1596,2408,1596,2408,1398" shape="poly" id="room8">
+        </map>
     </div>
-
     <script src="script.js"></script>
-    
 </body>
-
 </html>
