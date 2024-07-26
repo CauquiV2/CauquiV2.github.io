@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawRectangle(coords, id, imgWidth, imgHeight) {
         const rect = document.createElement('canvas');
         rect.className = 'highlight rectangle';
-        rect.id = `highlight-${id}`;
+        rect.id = `${id}`;
     
         const [left, top, right, bottom] = coords;
     
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawPolygon(coords, id, imgWidth, imgHeight) {
         const poly = document.createElement('canvas');
         poly.className = 'highlight';
-        poly.id = `highlight-${id}`;
+        poly.id = `${id}`;
     
         // Calculate the bounding box for positioning the canvas
         const minX = Math.min(...coords.filter((_, i) => i % 2 === 0));
