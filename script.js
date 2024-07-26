@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function drawPolygon(coords, id, imgWidth, imgHeight) {
         const poly = document.createElement('canvas');
-        poly.className = 'highlight polygon';
+        poly.className = 'highlight';
         poly.id = `highlight-${id}`;
     
         // Calculate the bounding box for positioning the canvas
@@ -110,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
         poly.height = (maxY - minY) / naturalHeight * imgHeight;
     
         const context = poly.getContext('2d');
-        context.clearRect(0, 0, poly.width, poly.height); // Clear any previous drawings
         context.beginPath();
         context.moveTo(
             (coords[0] / naturalWidth) * imgWidth - parseFloat(poly.style.left),
@@ -123,13 +122,17 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         }
         context.closePath();
+    
+        // Set fill color to green with opacity 0.3
+        context.fillStyle = 'rgba(0, 255, 0, 0.3)'; // Green with opacity
+        context.fill(); // Fill the polygon with the fillStyle color
         
         // Optionally set stroke color and draw outline
-        /* context.strokeStyle = 'green';
+        context.strokeStyle = 'green';
         context.lineWidth = 2;
-        context.stroke(); */ // Draw the outline of the polygon
+        context.stroke(); // Draw the outline of the polygon
     
-        imageContainer.appendChild(poly); 
+        imageContainer.appendChild(poly);
     }
 
     rooms.forEach(room => {
