@@ -1,3 +1,45 @@
+function updateOverlayPositions() {
+    const imgWidth = image.clientWidth;
+    const imgHeight = image.clientHeight;
+
+    overlays.forEach(poly => {
+        const id = poly.id.replace('highlight-', '');
+        const room = rooms.find(r => r.id === id);
+        if (room) {
+            const coords = room.coords.split(',').map(Number);
+            // Recalculate position and size
+            const minX = Math.min(...coords.filter((_, i) => i % 2 === 0));
+            const minY = Math.min(...coords.filter((_, i) => i % 2 !== 0));
+            const maxX = Math.max(...coords.filter((_, i) => i % 2 === 0));
+            const maxY = Math.max(...coords.filter((_, i) => i % 2 !== 0));
+
+            poly.style.left = `${(minX / naturalWidth) * imgWidth}px`;
+            poly.style.top = `${(minY / naturalHeight) * imgHeight}px`;
+            poly.width = (maxX - minX) / naturalWidth * imgWidth;
+            poly.height = (maxY - minY) / naturalHeight * imgHeight;
+
+            const context = poly.getContext('2d');
+            context.clearRect(0, 0, poly.width, poly.height);
+            context.beginPath();
+            context.moveTo(
+                (coords[0] / naturalWidth) * imgWidth - parseFloat(poly.style.left),
+                (coords[1] / naturalHeight) * imgHeight - parseFloat(poly.style.top)
+            );
+            for (let i = 2; i < coords.length; i += 2) {
+                context.lineTo(
+                    (coords[i] / naturalWidth) * imgWidth - parseFloat(poly.style.left),
+                    (coords[i + 1] / naturalHeight) * imgHeight - parseFloat(poly.style.top)
+                );
+            }
+            context.closePath();
+            context.fillStyle = 'rgba(0, 255, 0, 0.3)'; // Green with opacity
+            context.fill(); // Fill the polygon
+            context.strokeStyle = 'green';
+            context.lineWidth = 2;
+            context.stroke(); // Draw the outline
+        }
+    });
+}
 document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById('image-map');
     const imageContainer = document.getElementById('image-map-container');
@@ -5,6 +47,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageHeight = image.clientHeight;
     const naturalHeight=4678;
     const naturalWidth=6622;
+    function updateOverlayPositions() {
+    const imgWidth = image.clientWidth;
+    const imgHeight = image.clientHeight;
+
+    overlays.forEach(poly => {
+        const id = poly.id.replace('highlight-', '');
+        const room = rooms.find(r => r.id === id);
+        if (room) {
+            const coords = room.coords.split(',').map(Number);
+            // Recalculate position and size
+            const minX = Math.min(...coords.filter((_, i) => i % 2 === 0));
+            const minY = Math.min(...coords.filter((_, i) => i % 2 !== 0));
+            const maxX = Math.max(...coords.filter((_, i) => i % 2 === 0));
+            const maxY = Math.max(...coords.filter((_, i) => i % 2 !== 0));
+
+            poly.style.left = `${(minX / naturalWidth) * imgWidth}px`;
+            poly.style.top = `${(minY / naturalHeight) * imgHeight}px`;
+            poly.width = (maxX - minX) / naturalWidth * imgWidth;
+            poly.height = (maxY - minY) / naturalHeight * imgHeight;
+
+            const context = poly.getContext('2d');
+            context.clearRect(0, 0, poly.width, poly.height);
+            context.beginPath();
+            context.moveTo(
+                (coords[0] / naturalWidth) * imgWidth - parseFloat(poly.style.left),
+                (coords[1] / naturalHeight) * imgHeight - parseFloat(poly.style.top)
+            );
+            for (let i = 2; i < coords.length; i += 2) {
+                context.lineTo(
+                    (coords[i] / naturalWidth) * imgWidth - parseFloat(poly.style.left),
+                    (coords[i + 1] / naturalHeight) * imgHeight - parseFloat(poly.style.top)
+                );
+            }
+            context.closePath();
+            context.fillStyle = 'rgba(0, 255, 0, 0.3)'; // Green with opacity
+            context.fill(); // Fill the polygon
+            context.strokeStyle = 'green';
+            context.lineWidth = 2;
+            context.stroke(); // Draw the outline
+        }
+    });
+}
 
     const rooms = [
         {id:'room1', coords: '3138,1427,3209,1503', shape: 'rect'},
@@ -22,25 +106,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function drawRectangle(coords, id, imgWidth, imgHeight) {
-        const [left, top, right, bottom] = coords;
-        const leftPx = (left / naturalWidth) * imgWidth;
-        const topPx = (top / naturalHeight) * imgHeight;
-        const rightPx = (right / naturalWidth) * imgWidth;
-        const bottomPx = (bottom / naturalHeight) * imgHeight;
-
-        const rect = document.createElement('div');
-        rect.className = 'highlight';
-        rect.style.left = `${leftPx}px`;
-        rect.style.top = `${topPx}px`;
-        rect.style.width = `${rightPx - leftPx}px`;
-        rect.style.height = `${bottomPx - topPx}px`;
+        const rect = document.createElement('canvas');
+        rect.className = 'highlight rectangle';
         rect.id = `highlight-${id}`;
+    
+        const [left, top, right, bottom] = coords;
+    
+        rect.style.position = 'absolute';
+        rect.style.left = `${(left / naturalWidth) * imgWidth}px`;
+        rect.style.top = `${(top / naturalHeight) * imgHeight}px`;
+        rect.width = (right - left) / naturalWidth * imgWidth;
+        rect.height = (bottom - top) / naturalHeight * imgHeight;
+    
+        const context = rect.getContext('2d');
+        context.beginPath();
+        context.rect(0, 0, rect.width, rect.height);
+        context.closePath();
+        context.fill(); // No fill here, we use CSS for coloring
+    
+        // Optionally set stroke color and draw outline
+        context.strokeStyle = 'green';
+        context.lineWidth = 2;
+        context.stroke(); // Draw the outline of the rectangle
+    
         imageContainer.appendChild(rect);
+        // Store reference to the canvas element
     }
 
     function drawPolygon(coords, id, imgWidth, imgHeight) {
         const poly = document.createElement('canvas');
-        poly.className = 'highlight';
+        poly.className = 'highlight polygon';
         poly.id = `highlight-${id}`;
     
         // Calculate the bounding box for positioning the canvas
@@ -68,17 +163,15 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         }
         context.closePath();
+        context.stroke(); // No fill here, we use CSS for coloring
     
-        // Set fill color to green with opacity 0.3
-        context.fillStyle = 'rgba(0, 255, 0, 0.3)'; // Green with opacity
-        context.fill(); // Fill the polygon with the fillStyle color
-        
         // Optionally set stroke color and draw outline
         context.strokeStyle = 'green';
         context.lineWidth = 2;
         context.stroke(); // Draw the outline of the polygon
     
         imageContainer.appendChild(poly);
+         // Store reference to the canvas element
     }
 
     rooms.forEach(room => {
@@ -92,4 +185,5 @@ document.addEventListener("DOMContentLoaded", function () {
             drawPolygon(coords, id, imageWidth, imageHeight);
         }
     });
+    window.addEventListener('resize', updateOverlayPositions);
 });
