@@ -151,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
         poly.height = (maxY - minY) / naturalHeight * imgHeight;
     
         const context = poly.getContext('2d');
+        context.clearRect(0, 0, poly.width, poly.height); // Clear any previous drawings
         context.beginPath();
         context.moveTo(
             (coords[0] / naturalWidth) * imgWidth - parseFloat(poly.style.left),
@@ -163,15 +164,13 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         }
         context.closePath();
-        context.stroke(); // No fill here, we use CSS for coloring
-    
+        
         // Optionally set stroke color and draw outline
         context.strokeStyle = 'green';
-        context.lineWidth = 0;
+        context.lineWidth = 2;
         context.stroke(); // Draw the outline of the polygon
     
-        imageContainer.appendChild(poly);
-         // Store reference to the canvas element
+        imageContainer.appendChild(poly); 
     }
 
     rooms.forEach(room => {
@@ -187,3 +186,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     window.addEventListener('resize', updateOverlayPositions);
 });
+window.addEventListener('resize', updateOverlayPositions);
