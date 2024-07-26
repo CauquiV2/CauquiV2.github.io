@@ -166,9 +166,9 @@ document.addEventListener("DOMContentLoaded", function () {
         context.closePath();
         
         // Optionally set stroke color and draw outline
-        context.strokeStyle = 'green';
+        /* context.strokeStyle = 'green';
         context.lineWidth = 2;
-        context.stroke(); // Draw the outline of the polygon
+        context.stroke(); */ // Draw the outline of the polygon
     
         imageContainer.appendChild(poly); 
     }
