@@ -7,9 +7,15 @@
         #image-map-container {
             position: relative;
             display: inline-block;
+            max-width: 100%; /* Ensure container doesn't exceed viewport width */
+            max-height: 100vh;
         }
         #image-map {
             display: block;
+            max-width: 100%; /* Constrain the image width */
+            max-height: 100%; /* Constrain the image height */
+            width: auto; /* Maintain aspect ratio */
+            height: auto; /* Maintain aspect ratio */
         }
         .highlight {
             position: absolute;
