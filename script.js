@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageContainer = document.getElementById('image-map-container');
     const imageWidth = image.clientWidth;
     const imageHeight = image.clientHeight;
+    const naturalHeight=4678;
+    const naturalWidth=6622;
 
     const rooms = [
         {id:'room1', coords: '3138,1427,3209,1503', shape: 'rect'},
