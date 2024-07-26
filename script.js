@@ -92,8 +92,8 @@ function updateRoomColors(roomNumbers) {
     // Ensure the image is fully loaded before processing
     mapImage.addEventListener('load', () => {
         const imageRect = mapImage.getBoundingClientRect();
-        const naturalWidth = 1654; // Replace with your image's natural width
-        const naturalHeight = 1140; // Replace with your image's natural height
+        const naturalWidth = 6622; // Replace with your image's natural width
+        const naturalHeight = 4678; // Replace with your image's natural height
 
         const rooms = [
             { id: "room1", coords: "3138,1427,3209,1503", shape: "rect", group: "room", status: "available" },
