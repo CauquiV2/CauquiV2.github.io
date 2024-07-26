@@ -1,45 +1,4 @@
-function updateOverlayPositions() {
-    const imgWidth = image.clientWidth;
-    const imgHeight = image.clientHeight;
 
-    overlays.forEach(poly => {
-        const id = poly.id.replace('highlight-', '');
-        const room = rooms.find(r => r.id === id);
-        if (room) {
-            const coords = room.coords.split(',').map(Number);
-            // Recalculate position and size
-            const minX = Math.min(...coords.filter((_, i) => i % 2 === 0));
-            const minY = Math.min(...coords.filter((_, i) => i % 2 !== 0));
-            const maxX = Math.max(...coords.filter((_, i) => i % 2 === 0));
-            const maxY = Math.max(...coords.filter((_, i) => i % 2 !== 0));
-
-            poly.style.left = `${(minX / naturalWidth) * imgWidth}px`;
-            poly.style.top = `${(minY / naturalHeight) * imgHeight}px`;
-            poly.width = (maxX - minX) / naturalWidth * imgWidth;
-            poly.height = (maxY - minY) / naturalHeight * imgHeight;
-
-            const context = poly.getContext('2d');
-            context.clearRect(0, 0, poly.width, poly.height);
-            context.beginPath();
-            context.moveTo(
-                (coords[0] / naturalWidth) * imgWidth - parseFloat(poly.style.left),
-                (coords[1] / naturalHeight) * imgHeight - parseFloat(poly.style.top)
-            );
-            for (let i = 2; i < coords.length; i += 2) {
-                context.lineTo(
-                    (coords[i] / naturalWidth) * imgWidth - parseFloat(poly.style.left),
-                    (coords[i + 1] / naturalHeight) * imgHeight - parseFloat(poly.style.top)
-                );
-            }
-            context.closePath();
-            context.fillStyle = 'rgba(0, 255, 0, 0.3)'; // Green with opacity
-            context.fill(); // Fill the polygon
-            context.strokeStyle = 'green';
-            context.lineWidth = 2;
-            context.stroke(); // Draw the outline
-        }
-    });
-}
 document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById('image-map');
     const imageContainer = document.getElementById('image-map-container');
