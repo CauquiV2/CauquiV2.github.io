@@ -2,8 +2,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image with Overlays</title>
+    <title>Plano TiP Historico</title>
     <style>
+        body {
+            background-color: black; /* Set the background color of the entire page to black */
+            color: white; /* Optionally set the text color to white for better contrast */
+            margin: 0;
+            padding: 0;
+            position:relative
+            
+            height: calc(99%);
+            width: calc(99%);
+            color: #aaa;
+            font-family: "Calibri";
+            font-weight: 400;
+            line-height: 1.5em;
+            font-size: 110%;
+        }
         #image-map-container {
             position: relative;
             display: inline-block;
@@ -16,6 +31,13 @@
             max-height: 100%; /* Constrain the image height */
             width: auto; /* Maintain aspect ratio */
             height: auto; /* Maintain aspect ratio */
+            display: flex;
+            align-items: margin-top;
+            justify-content: center;
+            color: black;
+            /* Default color, will be overridden */
+            font-weight: bold;
+            text-align: center;
         }
         .highlight {
             position: absolute;
@@ -27,7 +49,7 @@
         }
 
         .rectangle {
-            background-color: rgba(0, 255, 0, 0.25); /* Green with opacity 0.3 */
+            background-color: rgba(0, 253, 0, 0.2); /* Green with opacity 0.3 */
         }
 
         .polygon {
@@ -38,12 +60,84 @@
         .highlight {
             border: 0px solid green;
         }
+        .image1 {
+        position: absolute;
+        width: 25%;
+        /* max-width: 700px; */
+        }
+        .display-time {
+        font-size: 350%;
+        line-height: 100%;
+        /* border-color: blue;
+        border-style: dotted; */
+        }
+        .inferior {
+        /* border-style: dotted;
+        border-color: green; */
+        /* display: block; */
+        position: absolute;
+        bottom: 2%;
+        width: 99%;
+        height: 7%;
+        text-align: left;
+        }
+        .slider-container {
+        text-align: center;
+        background: black;
+        padding: 5px;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        width:35%;
+        height:50px;
+        position: absolute; /* Enable absolute positioning */
+        top: 4%; /* Adjust the vertical position */
+        left: 55%;
+        z-index:100
+        }
+        
+        #arraySlider {
+        width: 100%;
+        margin: 20px 0;
+        }
+        input[type="text"] {
+        width: calc(40% - 110px); /* Adjust width of the input field */
+        padding: 5px; /* Adjust the padding inside the input */
+        border: 1px solid #ccc; /* Add a border to the input */
+        border-radius: 4px; /* Round the corners of the input */
+        box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+        }
+        
+        
     </style>
 </head>
 <body>
-    <div id="image-map-container">
-        <img id="image-map" src="planos-planta-TiP_BN2-2.png" alt="Background Image">
+    <div class='top'>
+        <img class="image1" id="sorevan" src="http://silhos:1901/sorevan"
+        width="600"></img>
+        <div class="slider-container">
+        <label for="desde">Fecha inicio:</label>
+        <input type="text" id="desde" name="desde" placeholder="AAAA-MM-DD">
+        <label for="hasta">Fecha fin:</label>
+        <input type="text" id="hasta" name="hasta" placeholder="AAAA-MM-DD">
+        <select id="key" onchange="displayValue()"></select>
+        <button onclick="SendFecha()">OK</button><br>
+        <input type="range" id="arraySlider" min="0" max="3" step="1">
+        <p>Fecha/Hora: <span id="sliderValue"></span></p>
+        </div>
     </div>
-    <script src="script.js"></script>
+    <div id="image-map-container">
+        <img id="image-map" src="/planoImgnegro" alt="Background Image" class='image2'>
+    </div>
+    <div class="inferior">
+        <div id="clock" class="left bottom">
+            <div class="clock">
+                <div class="display-date"></div>
+                <div class="display-time"></div>
+            </div>
+        </div>
+    
+    <script defer src="../uibuilder/uibuilder.iife.min.js"></script>
+    <script defer src="index.js"></script>
+    <script defer src="date-time.js"></script>
 </body>
 </html>
